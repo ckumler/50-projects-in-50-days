@@ -42,7 +42,7 @@ jobs:
                   <title>Repository Index</title>
                   <style>
                     * {
-                    background-color: 0b0e0f;
+                    background-color: #0b0e0f;
                     color: #fcfdfd;
                     }
                     header {
