@@ -49,8 +49,8 @@ jobs:
                   stripped=${d%/}
                   # Strip leading numbers and underscore
                   stripped=${stripped#*_}
-                  # Replace underscores with spaces
-                  replaced=${stripped//_/ }
+                  # Replace hyphens with spaces
+                  replaced=${stripped//-/ }
                   # Capitalize each word
                   capitalized=$(echo "$replaced" | awk '{for(i=1;i<=NF;i++)sub(/./,toupper(substr($i,1,1)),$i)}1')
                   echo "<li><a href=\"$d/index.html\">$capitalized</a></li><br>" >> index.html
