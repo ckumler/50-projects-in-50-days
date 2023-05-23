@@ -40,23 +40,55 @@ jobs:
                   <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">
                   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
                   <title>Repository Index</title>
+                  <style>
+                    * {
+                    background-color: 0b0e0f;
+                    color: #fcfdfd;
+                    }
+                    header {
+                      text-align: center;
+                      margin-bottom: 20px;
+                    }
+                    body {
+                      font-family: Arial, sans-serif;
+                    }                    
+                    ul {
+                      list-style-type: none;
+                      padding: 0;
+                    }
+                    li {
+                      margin: 10px 0;
+                      font-size: 18px;
+                    }
+                    a {
+                      text-decoration: none;
+                    }
+                    a:hover {
+                      color: #005999;
+                    }
+                  </style>
                 </head>
-                <body><ul>" > index.html
+                <body>
+                  <header>
+                    <h1>50 Projects Index Page</h1>
+                  </header>
+                  <ul>" > index.html
 
           for d in */; do
-              if [[ -f "$d/index.html" ]]; then
-                  # Strip trailing slash from directory name
-                  stripped=${d%/}
-                  # Strip leading numbers and underscore
-                  stripped=${stripped#*_}
-                  # Replace hyphens with spaces
-                  replaced=${stripped//-/ }
-                  # Capitalize each word
-                  capitalized=$(echo "$replaced" | awk '{for(i=1;i<=NF;i++)sub(/./,toupper(substr($i,1,1)),$i)}1')
-                  echo "<li><a href=\"$d/index.html\">$capitalized</a></li><br>" >> index.html
-              fi
+            if [[ -f "$d/index.html" && "$d" != "00_starter/" ]]; then
+                # Strip trailing slash from directory name
+                stripped=${d%/}
+                # Strip leading numbers and underscore
+                stripped=${stripped#*_}
+                # Replace hyphens with spaces
+                replaced=${stripped//-/ }
+                # Capitalize each word
+                capitalized=$(echo "$replaced" | awk '{for(i=1;i<=NF;i++)sub(/./,toupper(substr($i,1,1)),$i)}1')
+                echo "<li><a href=\"$d/index.html\">$capitalized</a></li>" >> index.html
+            fi
           done
           echo "</ul></body></html>" >> index.html
+
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
