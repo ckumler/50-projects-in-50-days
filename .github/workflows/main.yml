@@ -34,29 +34,69 @@ jobs:
       - name: Generate Index Page
         run: |
           echo "<!DOCTYPE html>
-                <html lang=\"en\">
-                <head>
-                  <meta charset=\"UTF-8\">
-                  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">
-                  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
-                  <title>Repository Index</title>
+          <html lang="en">
+              <head>
+                  <meta charset="UTF-8" />
+                  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+                  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                  <title>50 Web Projects - Interactive Index</title>
                   <style>
-                    header {
-                      background-color: #0b0e0f;
-                      color: #fcfdfd;
-                      text-align: center;
-                      margin-bottom: 20px;
-                    }
-                    body {
-                      font-family: Arial, sans-serif;
-                    }                    
+                      *,
+                      *:before,
+                      *:after {
+                          box-sizing: border-box;
+                      }
+                      body {
+                          font-family: Arial, sans-serif;
+                          margin: 0;
+                          padding: 0;
+                      }
+
+                      header {
+                          background-color: #74cd51;
+                          color: #1c0a24;
+                          text-align: center;
+                          padding: 1rem;
+                      }
+                      header h1 {
+                          font-size: 4rem;
+                          font-weight: bold;
+                      }
+                      header h2 {
+                          font-size: 2rem;
+                          font-weight: bold;
+                      }
+
+                      ol {
+                          min-height: calc(100vh - 150px);
+                          color: #1c0a24;
+                          background: #efdff6;
+                          width: 100%;
+                          column-fill: balance-all;
+                          column-width: 300px;
+                          column-gap: 3rem;
+                          margin: 0;
+                          padding: 30px 60px;
+                          overflow: auto;
+                      }
+                      li {
+                          font-size: 1.75rem;
+                      }
+                      a {
+                          text-decoration: none;
+                          color: #1c0a24;
+                      }
+                      a:visited {
+                          color: #468e29;
+                      }
                   </style>
-                </head>
-                <body>
+              </head>
+              <body>
                   <header>
-                    <h1>50 Projects Index Page</h1>
+                      <h1>50 Projects in 50 Days Index</h1>
+                      <h2>This page auto-generates on main repo deployment</h2>
                   </header>
-                  <ul>" > index.html
+                  <ol>" > index.html
 
           for d in */; do
             if [[ -f "$d/index.html" && "$d" != "00_starter/" ]]; then
@@ -71,7 +111,7 @@ jobs:
                 echo "<li><a href=\"$d/index.html\">$capitalized</a></li>" >> index.html
             fi
           done
-          echo "</ul></body></html>" >> index.html
+          echo "</ol></body></html>" >> index.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v3
