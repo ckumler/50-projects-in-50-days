@@ -1,0 +1,61 @@
+body {
+    background-color: slateblue;
+    font-family: "Poppins", sans-serif;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Align horizontally center */
+    align-items: center; /* Align vertically center */
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 10px;
+    max-width: 90%; /* Or set the size you want */
+    max-height: 90%; /* Or set the size you want */
+    aspect-ratio: 1/1;
+}
+
+.btn {
+    background-color: lightgreen;
+    font-family: inherit;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: transform 0.1s ease;
+}
+
+.btn::before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+}
+
+.btn:active,
+.btn.key-active {
+    /* Same transformation as for :active state */
+    transform: scale(0.95);
+    box-shadow: -7px 8px 5px 0px pink, 5px 8px 5px 0px pink,
+        -7px -5px 5px 0px pink, 5px -5px 5px 0px pink;
+}
+.btn:active .key-indicator,
+.btn.key-active .key-indicator {
+    /* Same transformation as for :active state */
+    transform: scale(1.5);
+}
+
+.key-indicator {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    font-size: 0.8em;
+    color: white;
+    transition: transform 0.1s ease;
+}
