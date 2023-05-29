@@ -42,8 +42,8 @@ body {
 .btn.key-active {
     /* Same transformation as for :active state */
     transform: scale(0.95);
-    box-shadow: -7px 8px 5px 0px pink, 5px 8px 5px 0px pink,
-        -7px -5px 5px 0px pink, 5px -5px 5px 0px pink;
+    /*     box-shadow: -7px 8px 5px 0px pink, 5px 8px 5px 0px pink,
+        -7px -5px 5px 0px pink, 5px -5px 5px 0px pink; */
 }
 .btn:active .key-indicator,
 .btn.key-active .key-indicator {
